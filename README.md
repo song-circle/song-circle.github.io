@@ -176,7 +176,6 @@ window.VIDEOS = [
 로컬 서버에서 빨간 `TODO:` 표시로도 확인할 수 있습니다. `grep -rn "TODO" data index.html privacy` 로 전체 목록을 볼 수 있습니다.
 
 ### 기본 정보 — `data/site.js`
-- [ ] `forms.outsourcing`, `forms.recruit` 폼 엔드포인트
 - [ ] `name.en` 영문 이름 표기
 - [ ] (선택) `links.linkedin`
 
@@ -195,7 +194,6 @@ window.VIDEOS = [
 - [ ] `privacy` 전체 (시행일, 운영자, 수집 항목, 목적, 보관 기간, 제3자 SDK, 삭제 방법, 아동 정책)
 
 ### 기타
-- [ ] Formspree 엔드포인트 연결 후 `privacy/index.html` 외부 서비스 목록에 폼 서비스 추가 (주석으로 자리 있음)
 - [ ] 외주 가능 조건(재택·주말·기간 등) → `data/i18n.js` 의 `process.note`
 - [ ] 새 버그로그 영상이 올라오면 `data/videos.js` 맨 앞에 추가
 - [ ] 외주 폼 예산 구간이 원하는 기준인지 확인 (`data/i18n.js` 의 `contact.budget.*`)

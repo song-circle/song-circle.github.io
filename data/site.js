@@ -33,8 +33,9 @@ window.SITE = {
 
   // 외부 폼 서비스(Formspree 등) 엔드포인트. 비어 있으면 메일 앱(mailto)으로 대체됩니다.
   forms: {
-    outsourcing: "", // TODO: 외주 문의 폼 엔드포인트 (예: https://formspree.io/f/xxxxxxx)
-    recruit: ""      // TODO: 채용 제안 폼 엔드포인트
+    // 두 폼이 같은 엔드포인트를 쓰고, 메일 제목([외주 문의]/[채용 제안])으로 구분합니다.
+    outsourcing: "https://formspree.io/f/meagpall",
+    recruit: "https://formspree.io/f/meagpall"
   },
 
   // © 표기
