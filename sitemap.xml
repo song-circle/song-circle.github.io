@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 페이지를 추가하면 여기에도 <url>을 추가하세요. 도메인 연결 시 주소 일괄 변경 (README 참고) -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://song-circle.github.io/</loc><lastmod>2026-11-23</lastmod></url>
+  <url><loc>https://song-circle.github.io/projects/cpu-benchmark/</loc><lastmod>2026-11-23</lastmod></url>
+  <url><loc>https://song-circle.github.io/games/</loc><lastmod>2026-11-23</lastmod></url>
+  <url><loc>https://song-circle.github.io/games/sample-game/</loc><lastmod>2026-11-23</lastmod></url>
+  <url><loc>https://song-circle.github.io/games/sample-game/privacy/</loc><lastmod>2026-11-23</lastmod></url>
+  <url><loc>https://song-circle.github.io/privacy/</loc><lastmod>2026-11-23</lastmod></url>
+</urlset>

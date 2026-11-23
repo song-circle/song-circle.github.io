@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /_templates/
+
+# TODO: 커스텀 도메인 연결 시 주소 변경
+Sitemap: https://song-circle.github.io/sitemap.xml
