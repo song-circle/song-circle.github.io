@@ -5,10 +5,10 @@
    - 새 카드를 추가하면 i18n.js 의 ko(필수)·en(선택)에 문구도 추가하세요.
    ========================================================================== */
 window.SERVICES = [
-  { id: "backend", tags: ["Go", "MySQL", "REST API"] },
+  { id: "backend", tags: ["Go", "Node.js", "TypeScript", "PHP", "Java"] },
+  { id: "ocr", tags: ["LLM", "OCR", "AI Agent", "MCP"] },
   { id: "payment", tags: ["PG", "Webhook"] },
   { id: "integration", tags: ["REST", "WebSocket"] },
   { id: "risk", tags: ["Real-time", "Risk"] },
-  { id: "ocr", tags: ["OCR", "LLM", "AI Agent", "MCP"] },
   { id: "cicd", tags: ["Jenkins"] }
 ];
