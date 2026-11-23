@@ -1,0 +1,209 @@
+/* ==========================================================================
+   home.js — 메인 페이지 렌더링
+   데이터: window.SERVICES / CAREER / SKILLS / PROJECTS / GAMES / VIDEOS (data/*.js)
+   ========================================================================== */
+(function () {
+  "use strict";
+  var A = window.App, t = A.t, L = A.L, esc = A.esc, SITE = A.SITE;
+
+  function $(id) { return document.getElementById(id); }
+  function tags(list) {
+    if (!list || !list.length) return "";
+    return '<ul class="tags">' + list.map(function (x) { return '<li class="tag">' + esc(x) + "</li>"; }).join("") + "</ul>";
+  }
+
+  /* ---------- Hero ---------- */
+  function renderHero() {
+    $("hero-name").textContent = L(SITE.name);
+    var gh = $("hero-github");
+    if (SITE.links && SITE.links.github) { gh.href = SITE.links.github; gh.innerHTML = A.icons.github + "<span>" + esc(t("hero.ctaGithub")) + "</span>"; }
+    else gh.hidden = true;
+  }
+
+  /* ---------- 서비스 ---------- */
+  function renderServices() {
+    $("services-list").innerHTML = (window.SERVICES || []).map(function (s, i) {
+      return '<article class="card">' +
+        '<div class="card-num">' + String(i + 1).padStart(2, "0") + "</div>" +
+        "<h3>" + esc(t("services." + s.id + ".title")) + "</h3>" +
+        "<p>" + esc(t("services." + s.id + ".desc")) + "</p>" +
+        '<div class="card-foot">' + tags(s.tags) + "</div>" +
+        "</article>";
+    }).join("");
+  }
+
+  /* ---------- 경력 ---------- */
+  function renderCareer() {
+    $("career-list").innerHTML = (window.CAREER || []).map(function (c) {
+      var org = [L(c.company), L(c.domain)].filter(Boolean);
+      var meta = (L(c.period) ? "<span>" + esc(L(c.period)) + "</span>" : A.todo("기간")) +
+        (c.current ? '<span class="badge badge-released">' + esc(t("career.current")) + "</span>" : "");
+      var points = (c.points || []).map(L).filter(Boolean);
+      return '<li class="tl-item' + (c.current ? " current" : "") + '">' +
+        '<div class="tl-meta">' + meta + "</div>" +
+        '<h3 class="tl-title">' + esc(L(c.title)) + "</h3>" +
+        '<p class="tl-org">' + esc(org.join(" · ")) +
+        (L(c.company) ? "" : " " + A.todo("회사명")) +
+        (L(c.role) ? " · " + esc(L(c.role)) : " " + A.todo("직무")) + "</p>" +
+        '<div class="tl-body">' +
+        (points.length ? "<ul>" + points.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ul>" : "") +
+        ((c.stack && c.stack.length) ? tags(c.stack) : A.todo("사용 기술")) +
+        "</div></li>";
+    }).join("");
+  }
+
+  /* ---------- 기술 스택 ---------- */
+  function renderSkills() {
+    $("skills-list").innerHTML = (window.SKILLS || []).map(function (s) {
+      return '<div class="skill"><div class="skill-name">' + esc(s.name) + '</div><div class="skill-use">' +
+        A.orTodo(s.use, s.name + " 사용처") + "</div></div>";
+    }).join("");
+  }
+
+  /* ---------- 프로젝트 ---------- */
+  function renderProjects() {
+    $("projects-list").innerHTML = (window.PROJECTS || []).map(function (p) {
+      var foot = [];
+      if (p.detail) foot.push('<a class="btn btn-sm btn-primary" href="/projects/' + esc(p.slug) + '/">' + esc(t("projects.detail")) + A.icons.arrow + "</a>");
+      foot.push(A.linkBtn(p.github, "GitHub", { icon: "github", todo: "GitHub 링크" }));
+      foot.push(A.linkBtn(p.video, t("projects.video"), { icon: "youtube", todo: "영상 링크" }));
+      return '<article class="card">' +
+        '<div class="card-top"><h3>' + esc(L(p.title)) + "</h3>" + A.statusBadge(p.status) + "</div>" +
+        "<p>" + esc(L(p.summary)) + "</p>" +
+        tags(p.tags) +
+        '<div class="card-foot">' + foot.join("") + "</div>" +
+        "</article>";
+    }).join("");
+  }
+
+  /* ---------- 게임 미리보기 ---------- */
+  function renderGames() {
+    var list = (window.GAMES || []).filter(function (g) { return g.listed !== false; }).slice(0, 3);
+    $("games-list").innerHTML = list.length
+      ? list.map(A.gameCard).join("")
+      : '<div class="empty" style="grid-column:1/-1">' + A.statusBadge("soon") + "<p style=\"margin:10px 0 0\">" + esc(t("games.empty")) + "</p></div>";
+  }
+
+  /* ---------- 유튜브 ---------- */
+  function renderVideos() {
+    var vids = (window.VIDEOS || []).slice(0, 3);
+    $("videos-list").innerHTML = vids.length
+      ? vids.map(function (v) {
+          var url = "https://www.youtube.com/watch?v=" + encodeURIComponent(v.id);
+          var thumb = "https://i.ytimg.com/vi/" + encodeURIComponent(v.id) + "/hqdefault.jpg";
+          return '<a class="card" href="' + url + '" target="_blank" rel="noopener">' +
+            '<div class="card-media"><img src="' + thumb + '" alt="" loading="lazy" width="480" height="360"></div>' +
+            "<h3>" + esc(L(v.title)) + "</h3>" +
+            (v.date ? '<p class="card-num" style="margin:0">' + esc(v.date) + "</p>" : "") +
+            "</a>";
+        }).join("")
+      : '<div class="empty" style="grid-column:1/-1">' + esc(t("youtube.empty")) + " " + A.todo("data/videos.js") + "</div>";
+
+    var yt = SITE.links && SITE.links.youtube;
+    $("youtube-channel").innerHTML = yt
+      ? '<a class="btn" href="' + esc(yt) + '" target="_blank" rel="noopener">' + A.icons.youtube + "<span>" + esc(t("youtube.channel")) + "</span></a>"
+      : A.todo("data/site.js links.youtube (채널 URL)");
+  }
+
+  /* ---------- 연락처 ---------- */
+  function renderContact() {
+    $("contact-email").innerHTML = SITE.email
+      ? '<a href="mailto:' + esc(SITE.email) + '">' + esc(SITE.email) + "</a>"
+      : esc(t("contact.emailPending")) + " " + A.todo("data/site.js email");
+  }
+
+  A.onRender(function () {
+    renderHero();
+    renderServices();
+    renderCareer();
+    renderSkills();
+    renderProjects();
+    renderGames();
+    renderVideos();
+    renderContact();
+  });
+
+  /* ---------- 연락처 탭 (한 번만 연결) ---------- */
+  var tabs = [$("tab-outsourcing"), $("tab-recruit")];
+  function selectTab(id, focus) {
+    tabs.forEach(function (tab) {
+      var on = tab.getAttribute("aria-controls") === id;
+      tab.setAttribute("aria-selected", String(on));
+      tab.tabIndex = on ? 0 : -1;
+      $(tab.getAttribute("aria-controls")).hidden = !on;
+      if (on && focus) tab.focus();
+    });
+  }
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () { selectTab(tab.getAttribute("aria-controls")); });
+    tab.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      var next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      selectTab(next.getAttribute("aria-controls"), true);
+    });
+  });
+  // Hero 버튼(#contact-outsourcing / #contact-recruit) → 해당 탭 열고 이동
+  function syncHash() {
+    var h = location.hash.slice(1);
+    if (h === "contact-outsourcing" || h === "contact-recruit") {
+      selectTab(h);
+      $("contact").scrollIntoView();
+    }
+  }
+  window.addEventListener("hashchange", syncHash);
+  // 같은 해시를 다시 눌러도 hashchange가 안 일어나므로 클릭도 처리
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest('a[href="#contact-outsourcing"], a[href="#contact-recruit"]');
+    if (a && a.getAttribute("href") === location.hash) { e.preventDefault(); syncHash(); }
+  });
+  syncHash();
+
+  /* ---------- 폼 전송 ---------- */
+  // 엔드포인트(Formspree 등)가 있으면 fetch로 전송, 없으면 메일 앱(mailto)으로 대체
+  document.querySelectorAll("form[data-form]").forEach(function (form) {
+    var kind = form.getAttribute("data-form");
+    var status = form.querySelector(".form-status");
+    var button = form.querySelector('button[type="submit"]');
+
+    function show(msg, cls) { status.textContent = msg; status.className = "form-status full " + (cls || ""); }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      var endpoint = SITE.forms && SITE.forms[kind];
+      var data = new FormData(form);
+      if (data.get("_gotcha")) return; // 스팸 봇
+
+      if (endpoint) {
+        button.disabled = true;
+        show(t("contact.sending"));
+        fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } })
+          .then(function (res) {
+            if (!res.ok) throw new Error(res.status);
+            form.reset();
+            show(t("contact.sent"), "ok");
+          })
+          .catch(function () { show(t("contact.failed") + (SITE.email ? " (" + SITE.email + ")" : ""), "err"); })
+          .then(function () { button.disabled = false; });
+        return;
+      }
+
+      if (SITE.email) {
+        var lines = [];
+        form.querySelectorAll("input[name], select[name], textarea[name]").forEach(function (el) {
+          if (el.name.charAt(0) === "_" || !el.value) return;
+          var label = form.querySelector('label[for="' + el.id + '"]');
+          var text = el.tagName === "SELECT" ? el.options[el.selectedIndex].text : el.value;
+          lines.push((label ? label.textContent.trim() : el.name) + ": " + text);
+        });
+        location.href = "mailto:" + SITE.email +
+          "?subject=" + encodeURIComponent(data.get("_subject") || "") +
+          "&body=" + encodeURIComponent(lines.join("\n"));
+        show(t("contact.mailtoNote"));
+        return;
+      }
+
+      show(t("contact.unavailable"), "err");
+    });
+  });
+})();

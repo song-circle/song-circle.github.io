@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>원형 · Go 백엔드 엔지니어 | song-circle</title>
+  <meta name="description" content="Go 백엔드 엔지니어 원형의 포트폴리오. 금융·결제·외부 시스템 연동 백엔드 개발, OCR·LLM 자동화, CI/CD. 외주 문의와 채용 제안을 받습니다.">
+  <link rel="canonical" href="https://song-circle.github.io/">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1215" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="song-circle">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="원형 · Go 백엔드 엔지니어">
+  <meta property="og:description" content="금융·결제·외부 연동 백엔드 개발. 게임과 툴을 만듭니다. 외주 문의·채용 제안 환영.">
+  <meta property="og:url" content="https://song-circle.github.io/">
+  <meta property="og:image" content="https://song-circle.github.io/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="원형 · Go 백엔드 엔지니어">
+  <meta name="twitter:description" content="금융·결제·외부 연동 백엔드 개발. 게임과 툴을 만듭니다.">
+  <meta name="twitter:image" content="https://song-circle.github.io/assets/og.png">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- 구조화 데이터 (Person). 이름·링크가 바뀌면 함께 수정. TODO: sameAs에 유튜브 채널 URL 추가, email 추가 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "원형",
+    "url": "https://song-circle.github.io/",
+    "jobTitle": "Backend Engineer",
+    "description": "Go 백엔드 엔지니어 · 금융·결제·외부 연동 · 게임과 툴 개발",
+    "knowsAbout": ["Go", "MySQL", "Python", "C++", "C#", "Unity", "Jenkins", "Payment integration", "Risk management systems", "OCR", "LLM"],
+    "sameAs": ["https://github.com/song-circle"]
+  }
+  </script>
+</head>
+<body data-page="home">
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main">
+    <!-- 1. Hero -->
+    <section class="hero" id="top">
+      <div class="container">
+        <h1 class="hero-name" id="hero-name">원형</h1>
+        <p class="hero-tagline" data-i18n="hero.tagline">Go 백엔드 엔지니어 · 금융·결제·외부 연동 전문 · 게임과 툴을 만듭니다</p>
+        <p class="hero-sub" data-i18n="hero.sub"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact-outsourcing" data-i18n="hero.ctaOutsourcing">외주 문의</a>
+          <a class="btn" href="#contact-recruit" data-i18n="hero.ctaRecruit">채용 제안</a>
+          <a class="btn" id="hero-github" href="https://github.com/song-circle" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 할 수 있는 일 -->
+    <section class="section section-alt" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="services.eyebrow">Services</p>
+          <h2 class="section-title" data-i18n="services.title">할 수 있는 일</h2>
+          <p class="section-desc" data-i18n="services.desc"></p>
+        </div>
+        <div class="grid grid-3" id="services-list"></div>
+      </div>
+    </section>
+
+    <!-- 3. 경력 -->
+    <section class="section" id="career">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="career.eyebrow">Career</p>
+          <h2 class="section-title" data-i18n="career.title">경력</h2>
+          <p class="section-desc" data-i18n="career.desc"></p>
+        </div>
+        <ol class="timeline" id="career-list"></ol>
+      </div>
+    </section>
+
+    <!-- 4. 기술 스택 -->
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="skills.eyebrow">Skills</p>
+          <h2 class="section-title" data-i18n="skills.title">기술 스택</h2>
+          <p class="section-desc" data-i18n="skills.desc"></p>
+        </div>
+        <div class="skills" id="skills-list"></div>
+      </div>
+    </section>
+
+    <!-- 5. 프로젝트 -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="projects.eyebrow">Projects</p>
+          <h2 class="section-title" data-i18n="projects.title">프로젝트</h2>
+          <p class="section-desc" data-i18n="projects.desc"></p>
+        </div>
+        <div class="grid grid-2" id="projects-list"></div>
+      </div>
+    </section>
+
+    <!-- 6. 게임 -->
+    <section class="section section-alt" id="games">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="games.eyebrow">Games</p>
+          <h2 class="section-title" data-i18n="games.title">게임</h2>
+          <p class="section-desc" data-i18n="games.desc"></p>
+        </div>
+        <div class="grid grid-3" id="games-list"></div>
+        <p style="margin-top:20px"><a class="btn btn-sm" href="/games/"><span data-i18n="games.all">게임 전체 보기</span></a></p>
+      </div>
+    </section>
+
+    <!-- 7. 유튜브 -->
+    <section class="section" id="youtube">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="youtube.eyebrow">YouTube</p>
+          <h2 class="section-title" data-i18n="youtube.title">유튜브</h2>
+          <p class="section-desc" data-i18n="youtube.desc"></p>
+        </div>
+        <div class="grid grid-3" id="videos-list"></div>
+        <p style="margin-top:20px" id="youtube-channel"></p>
+      </div>
+    </section>
+
+    <!-- 8. 연락처 -->
+    <section class="section section-alt" id="contact">
+      <div class="container contact-wrap">
+        <div class="contact-aside">
+          <p class="section-eyebrow" data-i18n="contact.eyebrow">Contact</p>
+          <h2 class="section-title" data-i18n="contact.title">연락하기</h2>
+          <p data-i18n="contact.desc"></p>
+          <p><strong data-i18n="contact.emailLabel">이메일</strong><br><span class="contact-email" id="contact-email"></span></p>
+          <p class="form-note" data-i18n="contact.privacyNote"></p>
+        </div>
+
+        <div>
+          <div class="tabs" role="tablist" aria-label="Contact type">
+            <button type="button" class="tab" role="tab" id="tab-outsourcing" aria-controls="contact-outsourcing" aria-selected="true" data-i18n="contact.tabOutsourcing">외주 문의</button>
+            <button type="button" class="tab" role="tab" id="tab-recruit" aria-controls="contact-recruit" aria-selected="false" tabindex="-1" data-i18n="contact.tabRecruit">채용 제안</button>
+          </div>
+
+          <!-- 외주 문의 폼: 엔드포인트는 data/site.js 의 forms.outsourcing -->
+          <div class="tab-panel" role="tabpanel" id="contact-outsourcing" aria-labelledby="tab-outsourcing">
+            <form class="form" data-form="outsourcing" novalidate>
+              <input type="hidden" name="_subject" value="[외주 문의] song-circle">
+              <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <div class="field">
+                <label for="o-name" data-i18n="contact.name">이름 / 회사</label>
+                <input id="o-name" name="name" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="o-contact" data-i18n="contact.contact">연락처</label>
+                <input id="o-contact" name="contact" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="o-type"><span data-i18n="contact.type">프로젝트 유형</span> <span class="opt" data-i18n="contact.optional">(선택)</span></label>
+                <select id="o-type" name="type">
+                  <option value="" data-i18n="contact.select">선택해 주세요</option>
+                  <option value="backend" data-i18n="contact.type.backend">백엔드 API·서버</option>
+                  <option value="payment" data-i18n="contact.type.payment">결제 연동</option>
+                  <option value="integration" data-i18n="contact.type.integration">외부 시스템·거래소 연동</option>
+                  <option value="automation" data-i18n="contact.type.automation">OCR·LLM 자동화</option>
+                  <option value="cicd" data-i18n="contact.type.cicd">CI/CD</option>
+                  <option value="other" data-i18n="contact.type.other">기타</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="o-budget"><span data-i18n="contact.budget">예산 범위</span> <span class="opt" data-i18n="contact.optional">(선택)</span></label>
+                <!-- TODO: 예산 구간을 원하는 기준으로 조정 (data/i18n.js contact.budget.*) -->
+                <select id="o-budget" name="budget">
+                  <option value="" data-i18n="contact.select">선택해 주세요</option>
+                  <option value="under-3m" data-i18n="contact.budget.b1"></option>
+                  <option value="3m-10m" data-i18n="contact.budget.b2"></option>
+                  <option value="10m-30m" data-i18n="contact.budget.b3"></option>
+                  <option value="over-30m" data-i18n="contact.budget.b4"></option>
+                  <option value="tbd" data-i18n="contact.budget.tbd"></option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="o-schedule" data-i18n="contact.schedule">일정</label>
+                <input id="o-schedule" name="schedule" data-i18n-placeholder="contact.schedulePh">
+              </div>
+              <div class="field full">
+                <label for="o-message" data-i18n="contact.message">내용</label>
+                <textarea id="o-message" name="message" required data-i18n-placeholder="contact.messagePh"></textarea>
+              </div>
+              <div class="full">
+                <button type="submit" class="btn btn-primary" data-i18n="contact.submit">보내기</button>
+              </div>
+              <p class="form-status full" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <!-- 채용 제안 폼: 엔드포인트는 data/site.js 의 forms.recruit -->
+          <div class="tab-panel" role="tabpanel" id="contact-recruit" aria-labelledby="tab-recruit" hidden>
+            <form class="form" data-form="recruit" novalidate>
+              <input type="hidden" name="_subject" value="[채용 제안] song-circle">
+              <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <div class="field">
+                <label for="r-name" data-i18n="contact.r.name">이름</label>
+                <input id="r-name" name="name" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="r-company" data-i18n="contact.r.company">회사</label>
+                <input id="r-company" name="company" autocomplete="organization" required>
+              </div>
+              <div class="field">
+                <label for="r-email" data-i18n="contact.r.email">회신받을 이메일</label>
+                <input id="r-email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="r-position" data-i18n="contact.r.position">포지션</label>
+                <input id="r-position" name="position" required>
+              </div>
+              <div class="field full">
+                <label for="r-type"><span data-i18n="contact.r.type">근무 형태</span> <span class="opt" data-i18n="contact.optional">(선택)</span></label>
+                <select id="r-type" name="employment">
+                  <option value="" data-i18n="contact.select">선택해 주세요</option>
+                  <option value="full-time" data-i18n="contact.r.type.full">정규직</option>
+                  <option value="contract" data-i18n="contact.r.type.contract">계약직</option>
+                  <option value="other" data-i18n="contact.r.type.other">기타</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="r-message" data-i18n="contact.message">내용</label>
+                <textarea id="r-message" name="message" required data-i18n-placeholder="contact.r.messagePh"></textarea>
+              </div>
+              <div class="full">
+                <button type="submit" class="btn btn-primary" data-i18n="contact.submit">보내기</button>
+              </div>
+              <p class="form-status full" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="/data/site.js"></script>
+  <script src="/data/i18n.js"></script>
+  <script src="/data/services.js"></script>
+  <script src="/data/career.js"></script>
+  <script src="/data/skills.js"></script>
+  <script src="/data/projects.js"></script>
+  <script src="/data/games.js"></script>
+  <script src="/data/videos.js"></script>
+  <script src="/assets/js/core.js"></script>
+  <script src="/assets/js/games.js"></script>
+  <script src="/assets/js/home.js"></script>
+</body>
+</html>
