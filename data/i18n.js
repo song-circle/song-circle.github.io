@@ -23,6 +23,7 @@ window.I18N = {
 
     "hero.tagline": "풀스택 개발자 · 금융·결제 시스템과 AI 자동화를 만듭니다",
     "hero.sub": "증권사 리스크 관리, 트레이딩·부동산 금융 플랫폼, 국가별 결제 연동, 다국가 CRM을 화면부터 서버까지 개발해 왔습니다. 실서비스에 LLM을 붙여 서류 검증과 음성 인식 기능을 자동화했고, 회사 밖에서는 AI 에이전트 도구와 게임을 만들어 유튜브에 기록합니다.",
+    "hero.status": "이직 제안 환영",
     "hero.ctaOutsourcing": "외주 문의",
     "hero.ctaRecruit": "채용 제안",
     "hero.ctaGithub": "GitHub",
@@ -128,6 +129,7 @@ window.I18N = {
     "contact.budget.b3": "1,000만 ~ 3,000만 원",
     "contact.budget.b4": "3,000만 원 이상",
     "contact.budget.tbd": "협의",
+    "contact.r.intro": "현재 재직 중이며, 더 좋은 조건의 제안이라면 이직을 적극적으로 검토합니다. 희망 근무 형태는 정규직, 근무지는 서울입니다.",
     "contact.r.name": "이름",
     "contact.r.company": "회사",
     "contact.r.email": "회신받을 이메일",
@@ -172,6 +174,7 @@ window.I18N = {
 
     "hero.tagline": "Full-stack developer · I build finance & payment systems and AI automation",
     "hero.sub": "I have built securities risk management, trading and real-estate investment platforms, country-specific payments and a multi-country CRM, from UI to server. I have shipped LLM features in production for document verification and speech recognition, and on the side I build AI agent tools and games and document them on YouTube.",
+    "hero.status": "Open to new roles",
     "hero.ctaOutsourcing": "Hire me for a project",
     "hero.ctaRecruit": "Job offer",
     "hero.ctaGithub": "GitHub",
@@ -246,6 +249,7 @@ window.I18N = {
     "contact.budget.b3": "₩10M – ₩30M",
     "contact.budget.b4": "Over ₩30M",
     "contact.budget.tbd": "To be discussed",
+    "contact.r.intro": "I am currently employed and actively open to better offers. Looking for a full-time role in Seoul.",
     "contact.r.name": "Name",
     "contact.r.company": "Company",
     "contact.r.email": "Reply-to email",
