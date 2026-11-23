@@ -194,7 +194,6 @@ window.VIDEOS = [
 - [ ] `privacy` 전체 (시행일, 운영자, 수집 항목, 목적, 보관 기간, 제3자 SDK, 삭제 방법, 아동 정책)
 
 ### 기타
-- [ ] 외주 가능 조건(재택·주말·기간 등) → `data/i18n.js` 의 `process.note`
 - [ ] 새 버그로그 영상이 올라오면 `data/videos.js` 맨 앞에 추가
 - [ ] 외주 폼 예산 구간이 원하는 기준인지 확인 (`data/i18n.js` 의 `contact.budget.*`)
 - [ ] `assets/og.png` 임시 이미지 교체 (1200×630)

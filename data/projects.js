@@ -34,9 +34,8 @@ window.PROJECTS = [
       {
         heading: "구조",
         items: [
-          "측정 러너: 측정만 하는 별도 프로세스. 우선순위 HIGH, 스레드를 코어에 고정, 하이브리드 CPU 대응",
-          "부하 모듈: 공통 C 인터페이스를 구현한 DLL (int: CRC-32·SHA-256·정렬·파싱 / mem: 대역폭·캐시~DRAM 지연)",
-          "제어 앱 ↔ 러너는 Named Pipe(JSON)로 통신 (제어 앱은 개발 예정)",
+          "화면 앱(cpu-bench.exe)과 측정 러너(cpu-bench-runner.exe)를 분리. 러너는 우선순위 HIGH, 스레드를 코어에 고정, 하이브리드 CPU 대응",
+          "부하 모듈: 공통 C 인터페이스를 구현한 DLL — int(CRC-32·SHA-256·정렬·파싱), mem(대역폭·캐시~DRAM 지연), fp(행렬곱·N-body, AVX2 지원 시 자동 사용)",
           "측정 절차: 워밍업 1회 → N회 측정 → 중앙값 채택, 회차 간 편차(CV)가 2%를 넘으면 경고"
         ]
       },
@@ -47,7 +46,7 @@ window.PROJECTS = [
           "PC가 안정적인지: 반복 중 결과가 한 번이라도 달라지면 불안정한 오버클럭·메모리 설정(XMP)을 경고"
         ]
       },
-      { heading: "다운로드", body: "GitHub Releases에서 cpu-bench-<버전>-win-x64.zip을 받아 압축을 풀고 cpu-bench.exe를 실행합니다. 아직 코드 서명 전 초기 버전입니다." }
+      { heading: "다운로드", body: "최신 버전 0.6.0 (2026-11-23, 부동소수점 측정 추가). GitHub Releases에서 cpu-bench-<버전>-win-x64.zip을 받아 압축을 풀고 cpu-bench.exe를 실행합니다. 설치가 필요 없고 Windows 10/11 x64에서 동작합니다. 아직 코드 서명 전 초기 버전이라 첫 실행 때 Windows 경고가 뜰 수 있습니다." }
     ]
   },
   {

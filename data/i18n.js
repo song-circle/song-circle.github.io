@@ -53,7 +53,7 @@ window.I18N = {
     "process.s3.desc": "중간 결과를 공유하며 진행해, 방향이 어긋나지 않게 확인하면서 만듭니다.",
     "process.s4.title": "인수인계",
     "process.s4.desc": "코드, 설명 문서, 배포·운영 방법을 넘기고 안정화까지 돕습니다.",
-    "process.note": "",
+    "process.note": "현재 재직 중이라 평일 저녁과 주말에 작업하고, 미팅은 온라인으로 진행합니다.",
 
     "career.eyebrow": "Career",
     "career.title": "경력",
@@ -204,6 +204,7 @@ window.I18N = {
     "process.s3.desc": "I share progress along the way so we stay aligned.",
     "process.s4.title": "Handover",
     "process.s4.desc": "You get the code, documentation and deploy/operations notes, and I help through stabilization.",
+    "process.note": "I am currently employed, so I work on weekday evenings and weekends, with meetings held online.",
 
     "career.eyebrow": "Career",
     "career.title": "Career",
