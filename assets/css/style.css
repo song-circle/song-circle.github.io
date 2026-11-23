@@ -197,6 +197,14 @@ a.card:hover { text-decoration: none; border-color: var(--border-strong); }
 .todo { display: none; }
 .is-dev .todo { display: inline-block; font-family: var(--mono); font-size: .72rem; color: var(--todo); background: var(--todo-soft); border: 1px dashed var(--todo); border-radius: 4px; padding: 1px 6px; margin: 2px 0; }
 
+/* ---------- Pager ---------- */
+.pager { display: flex; justify-content: center; gap: 6px; margin-top: 24px; }
+.pager:empty { display: none; }
+.pager-btn { font: inherit; font-size: .9rem; min-width: 40px; min-height: 40px; padding: 0 10px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer; }
+.pager-btn:hover:not([disabled]) { border-color: var(--border-strong); color: var(--text); }
+.pager-btn[aria-current="page"] { background: var(--accent); border-color: var(--accent); color: var(--accent-contrast); font-weight: 600; }
+.pager-btn[disabled] { opacity: .4; cursor: default; }
+
 /* ---------- Process ---------- */
 .process { margin-top: 40px; }
 .process-title { font-size: 1.15rem; margin-bottom: 14px; }

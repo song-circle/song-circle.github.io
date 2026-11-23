@@ -78,23 +78,46 @@
   }
 
   /* ---------- 프로젝트 ---------- */
+  // 최근에 업데이트(마지막 커밋)된 순서로 정렬하고 PAGE_SIZE개씩 나눠 보여줍니다.
+  // 커밋 날짜를 못 가져오면 data/projects.js 의 순서를 그대로 씁니다.
+  var PAGE_SIZE = 6, projPage = 0, projOrder = null, commitDates = {};
+
+  function projectCard(p) {
+    var foot = [];
+    if (p.detail) foot.push('<a class="btn btn-sm btn-primary" href="/projects/' + esc(p.slug) + '/">' + esc(t("projects.detail")) + A.icons.arrow + "</a>");
+    foot.push(A.linkBtn(p.github, "GitHub", { icon: "github", todo: "GitHub 링크" }));
+    foot.push(A.linkBtn(p.download, t("projects.download"), { icon: "external" }));
+    foot.push(A.linkBtn(p.video, t("projects.video"), { icon: "youtube" }));
+    var media = p.image
+      ? '<div class="card-media card-media-shot"><img src="' + esc(p.image) + '" alt="' + esc(L(p.title)) + ' 화면" loading="lazy"></div>'
+      : "";
+    return '<article class="card">' + media +
+      '<div class="card-top"><h3>' + esc(L(p.title)) + '</h3><span class="badges" data-recent="' + esc(p.github || "") + '">' + A.statusBadge(p.status) + "</span></div>" +
+      "<p>" + esc(L(p.summary)) + "</p>" +
+      tags(p.tags) +
+      '<div class="card-foot">' + foot.join("") + "</div>" +
+      "</article>";
+  }
+
+  function visibleProjects() {
+    return (window.PROJECTS || []).filter(function (p) { return !p.hidden; });
+  }
+
   function renderProjects() {
-    $("projects-list").innerHTML = (window.PROJECTS || []).filter(function (p) { return !p.hidden; }).map(function (p) {
-      var foot = [];
-      if (p.detail) foot.push('<a class="btn btn-sm btn-primary" href="/projects/' + esc(p.slug) + '/">' + esc(t("projects.detail")) + A.icons.arrow + "</a>");
-      foot.push(A.linkBtn(p.github, "GitHub", { icon: "github", todo: "GitHub 링크" }));
-      foot.push(A.linkBtn(p.download, t("projects.download"), { icon: "external" }));
-      foot.push(A.linkBtn(p.video, t("projects.video"), { icon: "youtube" }));
-      var media = p.image
-        ? '<div class="card-media card-media-shot"><img src="' + esc(p.image) + '" alt="' + esc(L(p.title)) + ' 화면" loading="lazy"></div>'
-        : "";
-      return '<article class="card">' + media +
-        '<div class="card-top"><h3>' + esc(L(p.title)) + '</h3><span class="badges" data-recent="' + esc(p.github || "") + '">' + A.statusBadge(p.status) + "</span></div>" +
-        "<p>" + esc(L(p.summary)) + "</p>" +
-        tags(p.tags) +
-        '<div class="card-foot">' + foot.join("") + "</div>" +
-        "</article>";
-    }).join("");
+    var list = projOrder || visibleProjects();
+    var pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+    if (projPage >= pages) projPage = pages - 1;
+    $("projects-list").innerHTML = list.slice(projPage * PAGE_SIZE, (projPage + 1) * PAGE_SIZE).map(projectCard).join("");
+    renderRecent();
+
+    var pager = $("projects-pager");
+    if (pages < 2) { pager.innerHTML = ""; return; }
+    var html = '<button type="button" class="pager-btn" data-page="' + (projPage - 1) + '"' + (projPage === 0 ? " disabled" : "") + ' aria-label="' + esc(t("pager.prev")) + '">‹</button>';
+    for (var i = 0; i < pages; i++) {
+      html += '<button type="button" class="pager-btn" data-page="' + i + '"' + (i === projPage ? ' aria-current="page"' : "") + ">" + (i + 1) + "</button>";
+    }
+    html += '<button type="button" class="pager-btn" data-page="' + (projPage + 1) + '"' + (projPage === pages - 1 ? " disabled" : "") + ' aria-label="' + esc(t("pager.next")) + '">›</button>';
+    pager.innerHTML = html;
   }
 
   function renderRecent() {
@@ -102,6 +125,42 @@
       A.recentBadge(el.getAttribute("data-recent"), el);
     });
   }
+
+  // 페이지 버튼 (한 번만 연결)
+  $("projects-pager").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-page]");
+    if (!b || b.disabled) return;
+    projPage = Number(b.getAttribute("data-page"));
+    renderProjects();
+    $("projects").scrollIntoView();
+  });
+
+  // 커밋 날짜를 모두 받으면(최대 2.5초 대기) 최근 순으로 다시 정렬
+  (function sortByRecent() {
+    var list = visibleProjects(), left = list.length, done = false;
+    function finish() {
+      if (done) return;
+      done = true;
+      var idx = {};
+      list.forEach(function (p, i) { idx[p.slug] = i; });
+      projOrder = list.slice().sort(function (a, b) {
+        var da = commitDates[a.slug] || "", db = commitDates[b.slug] || "";
+        if (da !== db) return db.localeCompare(da);
+        return idx[a.slug] - idx[b.slug];
+      });
+      projPage = 0;
+      renderProjects();
+    }
+    if (!left) return;
+    list.forEach(function (p) {
+      if (!p.github) { if (--left === 0) finish(); return; }
+      A.lastCommit(p.github, function (iso) {
+        commitDates[p.slug] = iso || "";
+        if (--left === 0) finish();
+      });
+    });
+    setTimeout(finish, 2500);
+  })();
 
   /* ---------- 게임 미리보기 ---------- */
   function renderGames() {
@@ -153,7 +212,6 @@
     renderCareer();
     renderSkills();
     renderProjects();
-    renderRecent();
     renderGames();
     renderVideos();
     renderContact();

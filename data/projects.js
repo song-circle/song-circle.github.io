@@ -6,7 +6,8 @@
    - github / download / video 가 비어 있으면 버튼이 숨겨집니다. (github·video는 로컬에서 TODO 표시)
    - image: (선택) 화면 캡처 경로. 예) "/assets/projects/<slug>.webp" — 카드 위쪽과 상세 페이지에 표시
    - sections: 상세 페이지 본문. { heading, body(문단 문자열) | items(목록 배열) }
-   - 메인에는 배열 순서대로 표시됩니다. hidden: true 인 항목은 숨겨집니다.
+   - 메인에는 GitHub 마지막 커밋이 최근인 순서로 6개씩 페이지를 나눠 표시됩니다.
+     (커밋 날짜를 못 가져오거나 날짜가 같으면 이 배열 순서). hidden: true 인 항목은 숨겨집니다.
    ========================================================================== */
 window.PROJECTS = [
   {

@@ -118,7 +118,7 @@
         try { localStorage.setItem(key, JSON.stringify({ t: Date.now(), d: d })); } catch (e) { /* 무시 */ }
         cb(d);
       })
-      .catch(function () { memo[key] = null; });
+      .catch(function () { memo[key] = null; cb(null); });
   }
   // 대상 요소 안에 "최근 업데이트" 배지를 붙임 (30일 넘으면 아무것도 안 함)
   function recentBadge(url, target) {
@@ -232,6 +232,7 @@
     statusBadge: statusBadge,
     linkBtn: linkBtn,
     recentBadge: recentBadge,
+    lastCommit: lastCommit,
     onRender: function (fn) { renderers.push(fn); },
     // 페이지 body의 data-* 값 읽기
     page: function (key) { return document.body.getAttribute("data-" + key); }
