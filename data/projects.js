@@ -5,7 +5,7 @@
      이 경우 /projects/<slug>/index.html 파일도 만들어야 합니다. (README "프로젝트 상세 추가" 참고)
    - github / download / video 가 비어 있으면 버튼이 숨겨집니다. (github·video는 로컬에서 TODO 표시)
    - sections: 상세 페이지 본문. { heading, body(문단 문자열) | items(목록 배열) }
-   - 메인에는 배열 순서대로 표시됩니다.
+   - 메인에는 배열 순서대로 표시됩니다. hidden: true 인 항목은 숨겨집니다.
    ========================================================================== */
 window.PROJECTS = [
   {
@@ -19,7 +19,7 @@ window.PROJECTS = [
     tags: ["C/C++", "Windows", "DLL", "Named Pipe"],
     github: "https://github.com/song-circle/devlog-kr/tree/main/cpu-bench",
     download: "https://github.com/song-circle/devlog-kr/releases?q=cpu-bench",
-    video: "https://www.youtube.com/@buglog_kr", // TODO(선택): 개발기 재생목록 URL이 생기면 교체
+    video: "https://www.youtube.com/watch?v=qidjb0Sqmww", // 개발기 1편 (재생목록이 생기면 교체)
     detail: true,
     sections: [
       {
@@ -154,6 +154,7 @@ window.PROJECTS = [
   },
   {
     slug: "unity-game",
+    hidden: true, // 공개할 내용이 생기면 지우거나 false 로
     title: { ko: "Unity 게임 (클라이언트 + 서버)", en: "Unity game (client + server)" },
     summary: {
       ko: "C# Unity 클라이언트와 Go 서버로 만드는 게임 프로젝트.",

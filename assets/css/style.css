@@ -191,6 +191,19 @@ a.card:hover { text-decoration: none; border-color: var(--border-strong); }
 .todo { display: none; }
 .is-dev .todo { display: inline-block; font-family: var(--mono); font-size: .72rem; color: var(--todo); background: var(--todo-soft); border: 1px dashed var(--todo); border-radius: 4px; padding: 1px 6px; margin: 2px 0; }
 
+/* ---------- Process ---------- */
+.process { margin-top: 40px; }
+.process-title { font-size: 1.15rem; margin-bottom: 14px; }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; grid-template-columns: 1fr; counter-reset: step; }
+@media (min-width: 640px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+.steps li { counter-increment: step; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+.steps li::before { content: "0" counter(step); display: block; font-family: var(--mono); font-size: .8rem; color: var(--accent); margin-bottom: 6px; }
+.steps strong { display: block; margin-bottom: 4px; }
+.steps p { margin: 0; color: var(--text-muted); font-size: .92rem; }
+.process-note { margin: 14px 0 0; color: var(--text-muted); font-size: .92rem; }
+.process-note:empty { display: none; }
+
 /* ---------- Timeline ---------- */
 .timeline { list-style: none; padding: 0; margin: 0; position: relative; }
 .timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }

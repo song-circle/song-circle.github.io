@@ -15,7 +15,7 @@ window.GAMES = [
     title: { ko: "프로젝트 G (가칭)", en: "Project G (working title)" }, // TODO: 실제 게임명
     tagline: { ko: "개발 중인 게임입니다. 구조 예시용 항목입니다.", en: "A game in development. Placeholder entry." }, // TODO
     status: "dev",
-    listed: true, // false 로 바꾸면 목록·메인에서 숨김 (상세·privacy 페이지 URL은 계속 동작)
+    listed: false, // true 로 바꾸면 목록·메인에 표시. false 로 바꾸면 목록·메인에서 숨김 (상세·privacy 페이지 URL은 계속 동작)
     cover: "", // TODO: 대표 이미지 경로 (예: /games/sample-game/cover.png, 16:9 권장)
     platforms: [], // TODO: 예) ["Android", "iOS", "Windows", "Web"]
     genre: "", // TODO: 장르

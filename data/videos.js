@@ -1,7 +1,7 @@
 /* ==========================================================================
    유튜브 영상 (메인 "유튜브" 섹션)
    - 채널 URL은 data/site.js 의 links.youtube 에서 관리합니다.
-   - 최신 영상이 위로 오도록 추가합니다. 메인에는 앞에서부터 최대 3개가 표시됩니다.
+   - 메인에는 앞에서부터 최대 3개가 표시됩니다. 보여주고 싶은 영상(가로 본편 권장)을 앞에 두세요.
    - id 에 유튜브 영상 ID(watch?v= 뒤 11자리)를 넣으면 썸네일과 링크가 자동으로 만들어집니다.
 
    항목 형식:
@@ -13,5 +13,11 @@
    }
    ========================================================================== */
 window.VIDEOS = [
-  // TODO: 첫 영상이 올라가면 여기에 추가
+  { id: "SZgg3NOWT6c", title: "점수를 만들고, 화면을 만들고, 처음으로 배포했습니다 | cpu-bench 개발기 2편", date: "2026-11-21", project: "cpu-benchmark" },
+  { id: "qidjb0Sqmww", title: "내 PC가 제 성능을 내는지 알려 주는 벤치마크를 만들고 있습니다 | cpu-bench 개발기 1편", date: "2026-11-19", project: "cpu-benchmark" },
+  { id: "M4M-VqIyWUk", title: "PC를 느리게 하는 프로그램 1위… 제 벤치마크였습니다", date: "2026-11-22", project: "cpu-benchmark" },
+  { id: "Ir85I4jv_Ts", title: "드라이버 없이 CPU 클럭 재는 법 — 덧셈 체인", date: "2026-11-21", project: "cpu-benchmark" },
+  { id: "f_qSFiY8JKM", title: "CPU가 램에서 값 하나 읽는 데 100나노초 — 캐시 계단 직접 재 봤다", date: "2026-11-20", project: "cpu-benchmark" },
+  { id: "esKnvY-ZjpQ", title: "같은 CPU인데 코어마다 클럭이 다르다? 깨어나는 중이었다", date: "2026-11-18", project: "cpu-benchmark" },
+  { id: "Lsrqw_LAIQQ", title: "30번 중 6번 멈추는 벤치마크, 범인은 '기다리는 방법'", date: "2026-11-17", project: "cpu-benchmark" }
 ];

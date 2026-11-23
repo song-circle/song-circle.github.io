@@ -79,7 +79,7 @@
 
   /* ---------- 프로젝트 ---------- */
   function renderProjects() {
-    $("projects-list").innerHTML = (window.PROJECTS || []).map(function (p) {
+    $("projects-list").innerHTML = (window.PROJECTS || []).filter(function (p) { return !p.hidden; }).map(function (p) {
       var foot = [];
       if (p.detail) foot.push('<a class="btn btn-sm btn-primary" href="/projects/' + esc(p.slug) + '/">' + esc(t("projects.detail")) + A.icons.arrow + "</a>");
       foot.push(A.linkBtn(p.github, "GitHub", { icon: "github", todo: "GitHub 링크" }));

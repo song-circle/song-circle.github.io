@@ -187,20 +187,17 @@ window.VIDEOS = [
 - [ ] (선택) 사용처 문구 다듬기
 
 ### 프로젝트 — `data/projects.js`
-- [ ] Unity 게임 GitHub 링크 (공개 시), 프로젝트별 관련 영상 링크
-
-### 유튜브 — `data/videos.js`
-- [ ] 영상 추가
+- [ ] Unity 게임: 현재 숨김(`hidden: true`). 공개할 때 GitHub 링크와 함께 해제
 
 ### 게임 — `data/games.js`
-- [ ] 예시 게임(`sample-game`)을 실제 게임으로 교체하거나 `listed: false`
+- [ ] 예시 게임(`sample-game`)은 현재 숨김(`listed: false`, noindex). 첫 게임을 낼 때 교체하고 noindex 줄 삭제, sitemap 추가
 - [ ] 게임 소개·커버·스크린샷·플랫폼·장르·링크
 - [ ] `privacy` 전체 (시행일, 운영자, 수집 항목, 목적, 보관 기간, 제3자 SDK, 삭제 방법, 아동 정책)
 
-### 사이트 개인정보처리방침 — `privacy/index.html`
-- [ ] 시행일, 보관 기간, 폼 서비스명
-
 ### 기타
+- [ ] Formspree 엔드포인트 연결 후 `privacy/index.html` 외부 서비스 목록에 폼 서비스 추가 (주석으로 자리 있음)
+- [ ] 외주 가능 조건(재택·주말·기간 등) → `data/i18n.js` 의 `process.note`
+- [ ] 새 버그로그 영상이 올라오면 `data/videos.js` 맨 앞에 추가
 - [ ] 외주 폼 예산 구간이 원하는 기준인지 확인 (`data/i18n.js` 의 `contact.budget.*`)
 - [ ] `assets/og.png` 임시 이미지 교체 (1200×630)
 - [ ] 도메인 연결 후 주소 일괄 변경 (위 6단계)
