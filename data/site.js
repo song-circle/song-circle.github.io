@@ -13,7 +13,7 @@ window.SITE = {
   },
 
   // 연락처
-  email: "", // TODO: 공개용 이메일 주소 (예: hello@도메인)
+  email: "junk2393@naver.com",
 
   links: {
     github: "https://github.com/song-circle",
