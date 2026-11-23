@@ -9,6 +9,6 @@ window.SERVICES = [
   { id: "payment", tags: ["PG", "Webhook"] },
   { id: "integration", tags: ["REST", "WebSocket"] },
   { id: "risk", tags: ["Real-time", "Risk"] },
-  { id: "ocr", tags: ["OCR", "LLM"] },
+  { id: "ocr", tags: ["OCR", "LLM", "AI Agent", "MCP"] },
   { id: "cicd", tags: ["Jenkins"] }
 ];

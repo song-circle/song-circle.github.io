@@ -83,7 +83,8 @@
       var foot = [];
       if (p.detail) foot.push('<a class="btn btn-sm btn-primary" href="/projects/' + esc(p.slug) + '/">' + esc(t("projects.detail")) + A.icons.arrow + "</a>");
       foot.push(A.linkBtn(p.github, "GitHub", { icon: "github", todo: "GitHub 링크" }));
-      foot.push(A.linkBtn(p.video, t("projects.video"), { icon: "youtube", todo: "영상 링크" }));
+      foot.push(A.linkBtn(p.download, t("projects.download"), { icon: "external" }));
+      foot.push(A.linkBtn(p.video, t("projects.video"), { icon: "youtube" }));
       return '<article class="card">' +
         '<div class="card-top"><h3>' + esc(L(p.title)) + "</h3>" + A.statusBadge(p.status) + "</div>" +
         "<p>" + esc(L(p.summary)) + "</p>" +
@@ -114,12 +115,16 @@
             (v.date ? '<p class="card-num" style="margin:0">' + esc(v.date) + "</p>" : "") +
             "</a>";
         }).join("")
-      : '<div class="empty" style="grid-column:1/-1">' + esc(t("youtube.empty")) + " " + A.todo("data/videos.js") + "</div>";
+      : A.todo("data/videos.js 에 영상 추가");
 
-    var yt = SITE.links && SITE.links.youtube;
-    $("youtube-channel").innerHTML = yt
-      ? '<a class="btn" href="' + esc(yt) + '" target="_blank" rel="noopener">' + A.icons.youtube + "<span>" + esc(t("youtube.channel")) + "</span></a>"
-      : A.todo("data/site.js links.youtube (채널 URL)");
+    var channels = SITE.youtubeChannels || [];
+    $("youtube-channel").innerHTML = '<div class="grid grid-2">' + channels.map(function (c) {
+      if (!c.url) return A.todo("data/site.js youtubeChannels: " + c.name + " URL");
+      return '<a class="card channel" href="' + esc(c.url) + '" target="_blank" rel="noopener">' +
+        '<div class="card-top"><h3>' + esc(L(c.name)) + "</h3>" + A.icons.youtube + "</div>" +
+        "<p>" + esc(L(c.desc)) + "</p>" +
+        '<div class="card-foot"><span class="btn btn-sm">' + esc(t("youtube.channel")) + A.icons.arrow + "</span></div></a>";
+    }).join("") + "</div>";
   }
 
   /* ---------- 연락처 ---------- */

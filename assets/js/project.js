@@ -17,6 +17,7 @@
     }
 
     var buttons = [
+      A.linkBtn(p.download, t("projects.download"), { primary: true, icon: "external" }),
       A.linkBtn(p.github, "GitHub", { icon: "github", todo: "GitHub 링크" }),
       A.linkBtn(p.video, t("projects.video"), { icon: "youtube", todo: "영상 링크" })
     ].join("");

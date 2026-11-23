@@ -17,9 +17,23 @@ window.SITE = {
 
   links: {
     github: "https://github.com/song-circle",
-    youtube: "", // TODO: 유튜브 채널 URL (예: https://www.youtube.com/@채널핸들)
+    youtube: "https://www.youtube.com/@buglog_kr", // 대표 채널 (푸터·구조화 데이터에 사용)
     linkedin: "" // TODO(선택): 링크드인 등 추가 링크
   },
+
+  // 유튜브 섹션에 보여줄 채널 목록 (url이 비어 있으면 숨김)
+  youtubeChannels: [
+    {
+      name: "버그로그",
+      url: "https://www.youtube.com/@buglog_kr",
+      desc: { ko: "한국어 개발 일지. 프로그램을 만들고 버그를 찾아 고치는 과정", en: "Korean dev log: building programs and fixing their bugs" }
+    },
+    {
+      name: "Agent Workbench",
+      url: "", // TODO: Agent Workbench 채널 URL
+      desc: { ko: "영어 채널. Claude Code와 AI 에이전트로 실제로 만들어 보는 과정", en: "Real builds with Claude Code and AI agents, one working thing per video" }
+    }
+  ],
 
   // 외부 폼 서비스(Formspree 등) 엔드포인트. 비어 있으면 메일 앱(mailto)으로 대체됩니다.
   forms: {
