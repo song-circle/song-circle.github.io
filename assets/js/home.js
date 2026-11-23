@@ -33,23 +33,40 @@
   }
 
   /* ---------- 경력 ---------- */
+  function careerList(points) {
+    points = (points || []).map(L).filter(Boolean);
+    return points.length ? "<ul>" + points.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ul>" : "";
+  }
+
   function renderCareer() {
     $("career-list").innerHTML = (window.CAREER || []).map(function (c) {
-      var org = [L(c.company), L(c.domain)].filter(Boolean);
       var meta = (L(c.period) ? "<span>" + esc(L(c.period)) + "</span>" : A.todo("기간")) +
         (c.current ? '<span class="badge badge-released">' + esc(t("career.current")) + "</span>" : "");
-      var points = (c.points || []).map(L).filter(Boolean);
+      var org = (L(c.company) ? "<strong>" + esc(L(c.company)) + "</strong>" : A.todo("회사명")) +
+        (L(c.role) ? " · " + esc(L(c.role)) : " " + A.todo("직무")) +
+        (L(c.domain) ? '<span class="tl-domain">' + esc(L(c.domain)) + "</span>" : "");
+      var projects = (c.projects || []).map(function (pj) {
+        return '<div class="tl-proj"><h4>' + esc(L(pj.name)) +
+          (L(pj.role) ? ' <span class="tl-proj-role">' + esc(L(pj.role)) + "</span>" : "") + "</h4>" +
+          careerList(pj.points) + "</div>";
+      }).join("");
       return '<li class="tl-item' + (c.current ? " current" : "") + '">' +
         '<div class="tl-meta">' + meta + "</div>" +
         '<h3 class="tl-title">' + esc(L(c.title)) + "</h3>" +
-        '<p class="tl-org">' + esc(org.join(" · ")) +
-        (L(c.company) ? "" : " " + A.todo("회사명")) +
-        (L(c.role) ? " · " + esc(L(c.role)) : " " + A.todo("직무")) + "</p>" +
-        '<div class="tl-body">' +
-        (points.length ? "<ul>" + points.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ul>" : "") +
+        '<p class="tl-org">' + org + "</p>" +
+        '<div class="tl-body">' + careerList(c.points) + projects +
         ((c.stack && c.stack.length) ? tags(c.stack) : A.todo("사용 기술")) +
         "</div></li>";
     }).join("");
+
+    var edu = window.EDUCATION || [];
+    $("education-list").innerHTML = edu.length
+      ? '<h3 class="edu-title">' + esc(t("career.education")) + "</h3>" +
+        edu.map(function (e) {
+          return '<p class="edu-item"><span class="tl-meta">' + esc(L(e.period)) + "</span> <strong>" + esc(L(e.school)) + "</strong> " +
+            esc([L(e.major), L(e.status)].filter(Boolean).join(" · ")) + "</p>";
+        }).join("")
+      : "";
   }
 
   /* ---------- 기술 스택 ---------- */

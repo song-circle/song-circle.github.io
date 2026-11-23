@@ -204,6 +204,15 @@ a.card:hover { text-decoration: none; border-color: var(--border-strong); }
 .tl-body ul { color: var(--text-muted); font-size: .95rem; }
 .tl-body li + li { margin-top: 4px; }
 .tl-body .tags { margin: 12px 0 0; }
+.tl-org strong { color: var(--text); font-weight: 600; }
+.tl-domain { display: block; font-size: .85rem; color: var(--text-faint); }
+.tl-proj + .tl-proj, .tl-body > ul + .tl-proj { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+.tl-proj h4 { font-size: .98rem; margin: 0 0 6px; }
+.tl-proj-role { font-weight: 400; font-size: .82rem; color: var(--text-faint); margin-left: 4px; }
+.education { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border); }
+.edu-title { font-size: 1.05rem; margin-bottom: 8px; }
+.edu-item { color: var(--text-muted); margin: 0; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+.edu-item strong { color: var(--text); }
 
 /* ---------- Skills ---------- */
 .skills { display: grid; gap: 0; grid-template-columns: 1fr; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); }

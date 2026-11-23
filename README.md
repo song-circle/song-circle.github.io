@@ -176,22 +176,18 @@ window.VIDEOS = [
 로컬 서버에서 빨간 `TODO:` 표시로도 확인할 수 있습니다. `grep -rn "TODO" data index.html privacy` 로 전체 목록을 볼 수 있습니다.
 
 ### 기본 정보 — `data/site.js`
-- [ ] `email` 공개용 이메일 주소
 - [ ] `links.youtube` 유튜브 채널 URL
 - [ ] `forms.outsourcing`, `forms.recruit` 폼 엔드포인트
 - [ ] `name.en` 영문 이름 표기
 - [ ] (선택) `links.linkedin`
 
-### 경력 — `data/career.js` (4개 항목 모두)
-- [ ] `period` 기간
-- [ ] `company` 회사명 (공개 가능한 경우만)
-- [ ] `role` 직무/직급
-- [ ] 결제·가상자산·증권사 항목의 `points` 구체화, `stack` 사용 기술
+### 경력 — `data/career.js`
+- [ ] 힐링샘: `role` 직급·직무, 서비스별 맡은 범위, `stack`
+- [ ] 잇핀·디맨드커브: `stack` 사용 기술
 - [ ] 성과 수치가 있으면 추가
 
 ### 기술 스택 — `data/skills.js`
-- [ ] Python 사용처
-- [ ] (선택) MySQL·C/C++ 사용처 보강
+- [ ] Node.js·TypeScript·JavaScript, Oracle·MSSQL·MariaDB, Linux·Nginx·Shell, Python 사용처
 
 ### 프로젝트 — `data/projects.js`
 - [ ] 두 프로젝트의 `github`, `video` 링크
@@ -209,7 +205,7 @@ window.VIDEOS = [
 - [ ] 시행일, 보관 기간, 폼 서비스명
 
 ### 기타
-- [ ] `index.html` JSON-LD `sameAs` 에 유튜브 URL, `email` 추가
+- [ ] `index.html` JSON-LD `sameAs` 에 유튜브 URL 추가
 - [ ] 외주 폼 예산 구간이 원하는 기준인지 확인 (`data/i18n.js` 의 `contact.budget.*`)
 - [ ] `assets/og.png` 임시 이미지 교체 (1200×630)
 - [ ] 도메인 연결 후 주소 일괄 변경 (위 6단계)

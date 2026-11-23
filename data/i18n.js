@@ -22,7 +22,7 @@ window.I18N = {
     "nav.skip": "본문으로 건너뛰기",
 
     "hero.tagline": "Go 백엔드 엔지니어 · 금융·결제·외부 연동 전문 · 게임과 툴을 만듭니다",
-    "hero.sub": "증권 리스크 관리, 가상자산 외부 통신, 결제 연동, 다국가 CRM 백엔드를 개발해 왔습니다. 안정적으로 돌아가는 서버와 연동을 만듭니다.",
+    "hero.sub": "증권사 리스크 관리, 트레이딩·부동산 금융 플랫폼, 국가별 결제 연동, 다국가 CRM 백엔드를 개발해 왔습니다. 안정적으로 돌아가는 서버와 연동을 만듭니다.",
     "hero.ctaOutsourcing": "외주 문의",
     "hero.ctaRecruit": "채용 제안",
     "hero.ctaGithub": "GitHub",
@@ -47,6 +47,7 @@ window.I18N = {
     "career.title": "경력",
     "career.desc": "어떤 문제를 어떤 기술로 풀었는지 중심으로 정리했습니다.",
     "career.current": "재직 중",
+    "career.education": "학력",
 
     "skills.eyebrow": "Skills",
     "skills.title": "기술 스택",
@@ -158,7 +159,7 @@ window.I18N = {
     "nav.skip": "Skip to content",
 
     "hero.tagline": "Go backend engineer · Finance, payments & external integrations · I build games and tools",
-    "hero.sub": "I have built securities risk management, crypto exchange connectivity, payment integrations, and multi-country CRM backends. I build servers and integrations that keep running.",
+    "hero.sub": "I have built securities risk management, trading and real-estate investment platforms, country-specific payment integrations, and multi-country CRM backends. I build servers and integrations that keep running.",
     "hero.ctaOutsourcing": "Hire me for a project",
     "hero.ctaRecruit": "Job offer",
     "hero.ctaGithub": "GitHub",
@@ -181,6 +182,8 @@ window.I18N = {
 
     "career.eyebrow": "Career",
     "career.title": "Career",
+    "career.current": "Current",
+    "career.education": "Education",
     "skills.eyebrow": "Skills",
     "skills.title": "Tech stack",
     "projects.eyebrow": "Projects",
