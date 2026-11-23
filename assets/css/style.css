@@ -187,6 +187,8 @@ a.card:hover { text-decoration: none; border-color: var(--border-strong); }
 .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 .badge-dev { color: var(--warn); background: var(--warn-soft); }
 .badge-released { color: var(--ok); background: var(--ok-soft); }
+.badge-recent { color: var(--accent); background: var(--accent-soft); }
+.badges { display: inline-flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
 .badge-soon { color: var(--text-muted); background: var(--bg-subtle); border: 1px solid var(--border); }
 .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
 .card-top h3 { margin: 0; }

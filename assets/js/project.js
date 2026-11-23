@@ -33,7 +33,7 @@
     root.innerHTML =
       '<div class="container page-head">' +
       '<p class="breadcrumb"><a href="/">' + esc(L(SITE.name)) + '</a> / <a href="/#projects">' + esc(t("nav.projects")) + "</a> / " + esc(L(p.title)) + "</p>" +
-      '<div class="page-meta">' + A.statusBadge(p.status) +
+      '<div class="page-meta" id="project-meta">' + A.statusBadge(p.status) +
       (p.tags || []).map(function (x) { return '<span class="tag">' + esc(x) + "</span>"; }).join("") + "</div>" +
       '<h1 class="page-title">' + esc(L(p.title)) + "</h1>" +
       '<p class="page-lead">' + esc(L(p.summary)) + "</p></div>" +
@@ -42,5 +42,6 @@
       (p.image ? '<figure class="shot-full"><img src="' + esc(p.image) + '" alt="' + esc(L(p.title)) + ' 화면"></figure>' : "") +
       sections +
       "</div></div>";
+    A.recentBadge(p.github, document.getElementById("project-meta"));
   });
 })();

@@ -93,6 +93,49 @@
       (ext ? ' target="_blank" rel="noopener"' : "") + ">" + (opts.icon ? ICONS[opts.icon] : "") + esc(label) + "</a>";
   }
 
+  /* ---------- 최근 업데이트 (GitHub 마지막 커밋) ----------
+     github URL(저장소 또는 /tree/<branch>/<폴더>)의 마지막 커밋이 RECENT_DAYS 안이면 배지를 돌려줍니다.
+     GitHub API 호출 제한(IP당 시간당 60회) 때문에 결과를 브라우저에 6시간 저장합니다. */
+  var RECENT_DAYS = 30, CACHE_MS = 6 * 3600 * 1000, memo = {};
+  function parseRepo(url) {
+    var m = /^https:\/\/github\.com\/([^/]+)\/([^/#?]+)(?:\/tree\/[^/]+\/(.+))?/.exec(url || "");
+    return m ? { owner: m[1], repo: m[2], path: m[3] || "" } : null;
+  }
+  function lastCommit(url, cb) {
+    var r = parseRepo(url);
+    if (!r) return;
+    var key = "lc:" + r.owner + "/" + r.repo + "/" + r.path;
+    if (memo[key] !== undefined) return cb(memo[key]);
+    try {
+      var c = JSON.parse(localStorage.getItem(key) || "null");
+      if (c && Date.now() - c.t < CACHE_MS) { memo[key] = c.d; return cb(c.d); }
+    } catch (e) { /* 무시 */ }
+    fetch("https://api.github.com/repos/" + r.owner + "/" + r.repo + "/commits?per_page=1" + (r.path ? "&path=" + encodeURIComponent(r.path) : ""))
+      .then(function (res) { if (!res.ok) throw new Error(res.status); return res.json(); })
+      .then(function (list) {
+        var d = list && list[0] && list[0].commit && list[0].commit.committer ? list[0].commit.committer.date : null;
+        memo[key] = d;
+        try { localStorage.setItem(key, JSON.stringify({ t: Date.now(), d: d })); } catch (e) { /* 무시 */ }
+        cb(d);
+      })
+      .catch(function () { memo[key] = null; });
+  }
+  // 대상 요소 안에 "최근 업데이트" 배지를 붙임 (30일 넘으면 아무것도 안 함)
+  function recentBadge(url, target) {
+    if (!url || !target) return;
+    lastCommit(url, function (iso) {
+      if (!iso || !target.isConnected || target.querySelector(".badge-recent")) return;
+      var days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+      if (days < 0 || days > RECENT_DAYS) return;
+      var when = days === 0 ? t("updated.today") : t("updated.daysAgo").replace("{n}", days);
+      var b = document.createElement("span");
+      b.className = "badge badge-recent";
+      b.title = new Date(iso).toLocaleDateString(lang === "ko" ? "ko-KR" : "en-US");
+      b.textContent = t("updated.recent") + " · " + when;
+      target.appendChild(b);
+    });
+  }
+
   /* ---------- 헤더 / 푸터 ---------- */
   function renderHeader() {
     var el = document.getElementById("site-header");
@@ -188,6 +231,7 @@
     icons: ICONS,
     statusBadge: statusBadge,
     linkBtn: linkBtn,
+    recentBadge: recentBadge,
     onRender: function (fn) { renderers.push(fn); },
     // 페이지 body의 data-* 값 읽기
     page: function (key) { return document.body.getAttribute("data-" + key); }

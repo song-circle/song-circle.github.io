@@ -89,12 +89,18 @@
         ? '<div class="card-media card-media-shot"><img src="' + esc(p.image) + '" alt="' + esc(L(p.title)) + ' 화면" loading="lazy"></div>'
         : "";
       return '<article class="card">' + media +
-        '<div class="card-top"><h3>' + esc(L(p.title)) + "</h3>" + A.statusBadge(p.status) + "</div>" +
+        '<div class="card-top"><h3>' + esc(L(p.title)) + '</h3><span class="badges" data-recent="' + esc(p.github || "") + '">' + A.statusBadge(p.status) + "</span></div>" +
         "<p>" + esc(L(p.summary)) + "</p>" +
         tags(p.tags) +
         '<div class="card-foot">' + foot.join("") + "</div>" +
         "</article>";
     }).join("");
+  }
+
+  function renderRecent() {
+    document.querySelectorAll("#projects-list [data-recent]").forEach(function (el) {
+      A.recentBadge(el.getAttribute("data-recent"), el);
+    });
   }
 
   /* ---------- 게임 미리보기 ---------- */
@@ -147,6 +153,7 @@
     renderCareer();
     renderSkills();
     renderProjects();
+    renderRecent();
     renderGames();
     renderVideos();
     renderContact();
