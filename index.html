@@ -222,6 +222,10 @@
           <!-- 채용 제안 폼: 엔드포인트는 data/site.js 의 forms.recruit -->
           <div class="tab-panel" role="tabpanel" id="contact-recruit" aria-labelledby="tab-recruit" hidden>
             <p class="form-intro" data-i18n="contact.r.intro"></p>
+            <p class="resume-links">
+              <a class="btn btn-sm" href="/resume/" data-i18n="contact.r.resume">이력서 보기</a>
+              <a class="btn btn-sm" href="/assets/resume.pdf" download data-i18n="contact.r.resumePdf">이력서 PDF</a>
+            </p>
             <form class="form" data-form="recruit" novalidate>
               <input type="hidden" name="_subject" value="[채용 제안] song-circle">
               <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">

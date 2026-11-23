@@ -267,6 +267,7 @@ a.card:hover { text-decoration: none; border-color: var(--border-strong); }
 .hp { position: absolute; left: -9999px; }
 
 .hero-status { margin: 0 0 14px; }
+.resume-links { display: flex; flex-wrap: wrap; gap: 8px; margin: -8px 0 20px; }
 .form-intro { margin: 0 0 20px; padding: 12px 14px; border-radius: var(--radius-sm); background: var(--ok-soft); color: var(--text); font-size: .95rem; }
 
 /* ---------- Footer ---------- */

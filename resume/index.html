@@ -1,0 +1,121 @@
+<!doctype html>
+<!--
+  이력서 페이지. 내용은 data/*.js (site·career·skills·projects) 에서 읽어 그립니다.
+  PDF(/assets/resume.pdf)는 이 페이지를 인쇄해서 만듭니다. 경력을 고친 뒤 PDF도 다시 만들어야 합니다 (README "이력서 PDF" 참고).
+  공개 페이지이므로 전화번호·주소·생년·연봉은 넣지 않습니다.
+-->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>송원형 이력서 | song-circle</title>
+  <meta name="description" content="풀스택 개발자 송원형 이력서 — 경력, 기술 스택, 프로젝트, 학력">
+  <link rel="canonical" href="https://song-circle.github.io/resume/">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="송원형 이력서">
+  <meta property="og:url" content="https://song-circle.github.io/resume/">
+  <meta property="og:image" content="https://song-circle.github.io/assets/og.png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .cv { max-width: 820px; padding-top: 40px; padding-bottom: 72px; }
+    .cv-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: flex-end; border-bottom: 2px solid var(--text); padding-bottom: 16px; margin-bottom: 8px; }
+    .cv-name { font-size: 2rem; margin: 0; }
+    .cv-role { color: var(--text-muted); margin: 4px 0 0; }
+    .cv-contact { list-style: none; padding: 0; margin: 0; font-size: .9rem; text-align: right; }
+    .cv-contact li { color: var(--text-muted); }
+    .cv-actions { display: flex; gap: 8px; margin: 16px 0 8px; flex-wrap: wrap; }
+    .cv h2 { font-size: 1.05rem; text-transform: none; border-bottom: 1px solid var(--border); padding-bottom: 6px; margin: 28px 0 12px; }
+    .cv p, .cv li { font-size: .93rem; }
+    .cv-summary { color: var(--text-muted); margin: 0; }
+    .cv-job { margin-bottom: 18px; break-inside: avoid; }
+    .cv-job-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .cv-job-head strong { font-size: 1rem; }
+    .cv-period { font-family: var(--mono); font-size: .82rem; color: var(--text-faint); white-space: nowrap; }
+    .cv-sub { color: var(--text-muted); font-size: .88rem; margin: 2px 0 6px; }
+    .cv-proj-name { font-weight: 600; font-size: .92rem; margin: 8px 0 2px; }
+    .cv ul { margin: 0; color: var(--text-muted); }
+    .cv li + li { margin-top: 2px; }
+    .cv-skills { display: grid; grid-template-columns: 1fr; gap: 4px 16px; margin: 0; }
+    .cv-skills dt { font-weight: 600; font-size: .9rem; }
+    .cv-skills dd { margin: 0 0 6px; color: var(--text-muted); font-size: .9rem; }
+    @media (min-width: 640px) { .cv-skills { grid-template-columns: 210px 1fr; } .cv-skills dd { margin: 0; } }
+    @media print {
+      @page { size: A4; margin: 14mm 14mm; }
+      :root { --bg: #fff; --surface: #fff; --text: #111; --text-muted: #333; --text-faint: #666; --border: #ccc; --accent: #1f5fbf; }
+      body { background: #fff; font-size: 10.5pt; }
+      .site-header, .site-footer, .cv-actions, .skip-link { display: none !important; }
+      .cv { padding: 0; max-width: none; }
+      .cv h2 { break-after: avoid; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body data-page="resume">
+  <header id="site-header" class="site-header"></header>
+  <main id="main"><div class="container cv" id="cv"></div></main>
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="/data/site.js"></script>
+  <script src="/data/i18n.js"></script>
+  <script src="/data/career.js"></script>
+  <script src="/data/skills.js"></script>
+  <script src="/data/projects.js"></script>
+  <script src="/assets/js/core.js"></script>
+  <script>
+    (function () {
+      var A = App, L = A.L, esc = A.esc, S = A.SITE;
+      function list(items) {
+        items = (items || []).map(L).filter(Boolean);
+        return items.length ? "<ul>" + items.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul>" : "";
+      }
+      A.onRender(function () {
+        var site = (S.baseUrl || "").replace(/^https?:\/\//, "");
+        var html =
+          '<div class="cv-head"><div><h1 class="cv-name">' + esc(L(S.name)) + "</h1>" +
+          '<p class="cv-role">' + esc(A.t("hero.tagline")) + "</p></div>" +
+          '<ul class="cv-contact">' +
+          (S.email ? '<li><a href="mailto:' + esc(S.email) + '">' + esc(S.email) + "</a></li>" : "") +
+          '<li><a href="' + esc(S.baseUrl) + '">' + esc(site) + "</a></li>" +
+          (S.links.github ? '<li><a href="' + esc(S.links.github) + '">' + esc(S.links.github.replace("https://", "")) + "</a></li>" : "") +
+          "</ul></div>" +
+          '<div class="cv-actions"><a class="btn btn-sm btn-primary" href="/assets/resume.pdf" download>PDF 다운로드</a>' +
+          '<button type="button" class="btn btn-sm" onclick="window.print()">인쇄</button></div>' +
+
+          "<h2>소개</h2><p class=\"cv-summary\">" + esc(A.t("hero.sub")) + " " + esc(A.t("contact.r.intro")) + "</p>" +
+
+          "<h2>경력</h2>" +
+          (window.CAREER || []).map(function (c) {
+            var proj = (c.projects || []).map(function (p) {
+              return '<p class="cv-proj-name">' + esc(L(p.name)) + (L(p.role) ? ' <span class="cv-sub">· ' + esc(L(p.role)) + "</span>" : "") + "</p>" + list(p.points);
+            }).join("");
+            return '<div class="cv-job"><div class="cv-job-head"><strong>' + esc(L(c.company)) + "</strong>" +
+              '<span class="cv-period">' + esc(L(c.period)) + "</span></div>" +
+              '<p class="cv-sub">' + esc([L(c.role), L(c.title)].filter(Boolean).join(" · ")) + "</p>" +
+              list(c.points) + proj +
+              ((c.stack && c.stack.length) ? '<p class="cv-sub">기술: ' + esc(c.stack.join(", ")) + "</p>" : "") +
+              "</div>";
+          }).join("") +
+
+          "<h2>기술</h2><dl class=\"cv-skills\">" +
+          (window.SKILLS || []).map(function (s) { return "<dt>" + esc(s.name) + "</dt><dd>" + esc(L(s.use)) + "</dd>"; }).join("") +
+          "</dl>" +
+
+          "<h2>개인 프로젝트</h2>" +
+          (window.PROJECTS || []).filter(function (p) { return !p.hidden; }).map(function (p) {
+            return '<div class="cv-job"><div class="cv-job-head"><strong>' + esc(L(p.title)) + "</strong>" +
+              (p.github ? '<span class="cv-period">' + esc(p.github.replace("https://", "")) + "</span>" : "") + "</div>" +
+              '<p class="cv-sub">' + esc(L(p.summary)) + "</p></div>";
+          }).join("") +
+
+          ((window.EDUCATION || []).length ? "<h2>학력</h2>" + window.EDUCATION.map(function (e) {
+            return '<div class="cv-job-head"><strong>' + esc(L(e.school)) + " " + esc(L(e.major)) + " " + esc(L(e.status)) + '</strong><span class="cv-period">' + esc(L(e.period)) + "</span></div>";
+          }).join("") : "");
+        document.getElementById("cv").innerHTML = html;
+      });
+    })();
+  </script>
+</body>
+</html>

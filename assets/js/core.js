@@ -143,6 +143,7 @@
     if (SITE.links && SITE.links.github) links.push('<a href="' + esc(SITE.links.github) + '" target="_blank" rel="noopener">GitHub</a>');
     if (SITE.links && SITE.links.youtube) links.push('<a href="' + esc(SITE.links.youtube) + '" target="_blank" rel="noopener">YouTube</a>');
     else links.push(todo("site.js links.youtube"));
+    links.push('<a href="/resume/">' + esc(t("footer.resume")) + "</a>");
     links.push('<a href="/games/">' + esc(t("footer.games")) + "</a>");
     links.push('<a href="/privacy/">' + esc(t("footer.privacy")) + "</a>");
 

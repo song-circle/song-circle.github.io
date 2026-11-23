@@ -104,6 +104,19 @@ window.VIDEOS = [
 3. 복사한 파일에서 `data-slug="..."`, `<title>`, `description`, `canonical`, `og:*` 를 새 프로젝트에 맞게 바꿉니다.
 4. `sitemap.xml` 에 URL을 추가합니다.
 
+## 이력서 (`/resume/`, `/assets/resume.pdf`)
+
+이력서 페이지는 `data/` 의 경력·기술·프로젝트·학력을 그대로 읽어 그립니다. 데이터만 고치면 페이지는 자동으로 바뀝니다.
+**PDF는 자동으로 안 바뀌므로** 경력을 고친 뒤 다시 만들어 커밋하세요. (로컬 서버를 켠 상태에서, PowerShell)
+
+```powershell
+python -m http.server 8765    # 다른 창에서 실행해 두기
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless=new --no-pdf-header-footer --virtual-time-budget=8000 `
+  --print-to-pdf="$PWD\assets\resume.pdf" "http://127.0.0.1:8765/resume/?lang=ko"
+```
+
+공개 페이지이므로 전화번호·주소·생년·연봉은 넣지 않습니다.
+
 ## 새 게임 추가 (상세 + privacy 페이지)
 
 게임 페이지는 **템플릿 HTML 1개 + `data/games.js` 데이터**로 만들어집니다. HTML에는 검색·공유용 제목만 있고 본문은 데이터에서 렌더링됩니다.
