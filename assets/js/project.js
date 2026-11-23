@@ -39,6 +39,7 @@
       '<p class="page-lead">' + esc(L(p.summary)) + "</p></div>" +
       '<div class="container page-body"><div class="prose">' +
       '<div class="link-row">' + buttons + "</div>" +
+      (p.image ? '<figure class="shot-full"><img src="' + esc(p.image) + '" alt="' + esc(L(p.title)) + ' 화면"></figure>' : "") +
       sections +
       "</div></div>";
   });

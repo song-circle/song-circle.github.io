@@ -4,12 +4,14 @@
    - detail: true 이면 카드에 "자세히" 링크가 생깁니다.
      이 경우 /projects/<slug>/index.html 파일도 만들어야 합니다. (README "프로젝트 상세 추가" 참고)
    - github / download / video 가 비어 있으면 버튼이 숨겨집니다. (github·video는 로컬에서 TODO 표시)
+   - image: (선택) 화면 캡처 경로. 예) "/assets/projects/<slug>.webp" — 카드 위쪽과 상세 페이지에 표시
    - sections: 상세 페이지 본문. { heading, body(문단 문자열) | items(목록 배열) }
    - 메인에는 배열 순서대로 표시됩니다. hidden: true 인 항목은 숨겨집니다.
    ========================================================================== */
 window.PROJECTS = [
   {
     slug: "cpu-benchmark",
+    image: "/assets/projects/cpu-benchmark.webp",
     title: { ko: "cpu-bench · 진단형 CPU 벤치마크", en: "cpu-bench · Diagnostic CPU benchmark" },
     summary: {
       ko: "점수만 보여 주지 않고, 내 PC가 제 성능을 내는지와 그 이유, 나아지는 방법까지 알려 주는 Windows용 무료 CPU 벤치마크. 개발 과정을 유튜브 '버그로그'에 연재합니다.",
@@ -50,6 +52,7 @@ window.PROJECTS = [
   },
   {
     slug: "ai-office",
+    image: "/assets/projects/ai-office.webp",
     title: { ko: "AI Office (가칭)", en: "AI Office (working title)" },
     summary: {
       ko: "요청 하나를 AI 팀(PM·개발·QA)이 나눠 실제 코드를 고치고, 테스트로 검증한 뒤 내가 승인해야만 반영되는 Windows 도구. 테스트 파일을 AI가 바꾸면 되돌리고 실패 처리합니다.",
@@ -63,6 +66,7 @@ window.PROJECTS = [
   },
   {
     slug: "tax-app",
+    image: "/assets/projects/tax-app.webp",
     title: { ko: "내 세금 한눈에", en: "My taxes at a glance" },
     summary: {
       ko: "홈택스·위택스에 흩어진 환급금·납부할 세금·체납액을 한 화면에 모으고, AI가 놓친 환급·경정청구 대상·납부 우선순위·기한을 분석해 주는 본인용 웹앱.",
@@ -127,6 +131,20 @@ window.PROJECTS = [
     detail: false
   },
   {
+    slug: "japanese-learn",
+    image: "/assets/projects/japanese-learn.webp",
+    title: { ko: "일본어 학습 앱", en: "Japanese learning app" },
+    summary: {
+      ko: "히라가나·가타카나부터 JLPT N5 단어, 문법, 여행·식당 회화까지 연습하는 앱. 퀴즈·플래시카드·듣기 등 6가지 연습 방식과 하루 목표·학습 통계를 제공하고, Android 앱으로도 빌드합니다.",
+      en: "Practice Japanese from kana to JLPT N5 vocabulary, grammar and travel phrases, with six drill modes, daily goals and stats. Also ships as an Android app."
+    },
+    status: "dev",
+    tags: ["React", "Capacitor", "Android"],
+    github: "https://github.com/song-circle/japanese-learn",
+    video: "",
+    detail: false
+  },
+  {
     slug: "agent-workbench",
     title: { ko: "Agent Workbench", en: "Agent Workbench" },
     summary: {
@@ -141,6 +159,7 @@ window.PROJECTS = [
   },
   {
     slug: "game-prototype",
+    image: "/assets/projects/game-prototype.webp",
     title: { ko: "스포츠 커리어 시뮬레이션 (프로토타입)", en: "Sports career simulation (prototype)" },
     summary: {
       ko: "여러 종목의 선수 커리어를 시뮬레이션하는 웹 게임 프로토타입. 화면과 분리된 게임 엔진, 시드 기반으로 재현 가능한 난수, 1만 명 대량 시뮬레이션으로 밸런스를 검증합니다.",

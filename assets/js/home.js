@@ -85,7 +85,10 @@
       foot.push(A.linkBtn(p.github, "GitHub", { icon: "github", todo: "GitHub 링크" }));
       foot.push(A.linkBtn(p.download, t("projects.download"), { icon: "external" }));
       foot.push(A.linkBtn(p.video, t("projects.video"), { icon: "youtube" }));
-      return '<article class="card">' +
+      var media = p.image
+        ? '<div class="card-media card-media-shot"><img src="' + esc(p.image) + '" alt="' + esc(L(p.title)) + ' 화면" loading="lazy"></div>'
+        : "";
+      return '<article class="card">' + media +
         '<div class="card-top"><h3>' + esc(L(p.title)) + "</h3>" + A.statusBadge(p.status) + "</div>" +
         "<p>" + esc(L(p.summary)) + "</p>" +
         tags(p.tags) +
