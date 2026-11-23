@@ -182,6 +182,8 @@
     if (a && a.getAttribute("href") === location.hash) { e.preventDefault(); syncHash(); }
   });
   syncHash();
+  // 이미지·폰트 로드로 위치가 바뀌므로 로드 후 한 번 더 맞춤
+  window.addEventListener("load", syncHash);
 
   /* ---------- 폼 전송 ---------- */
   // 엔드포인트(Formspree 등)가 있으면 fetch로 전송, 없으면 메일 앱(mailto)으로 대체
