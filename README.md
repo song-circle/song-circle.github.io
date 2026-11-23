@@ -1,6 +1,6 @@
 # song-circle.github.io
 
-원형(song-circle)의 개인 사이트. 외주 문의 · 채용 제안 · 게임 브랜드 홈페이지 · 유튜브 연계용.
+송원형(song-circle)의 개인 사이트. 외주 문의 · 채용 제안 · 게임 브랜드 홈페이지 · 유튜브 연계용.
 
 - 순수 HTML/CSS/JS 정적 사이트 (빌드 도구·npm 없음). 레포를 그대로 GitHub Pages에 올리면 동작합니다.
 - 내용(경력·프로젝트·게임·영상·문구)은 모두 `data/*.js` 에서 관리합니다.
@@ -182,12 +182,10 @@ window.VIDEOS = [
 - [ ] (선택) `links.linkedin`
 
 ### 경력 — `data/career.js`
-- [ ] 힐링샘: `role` 직급·직무, 서비스별 맡은 범위, `stack`
-- [ ] 잇핀·디맨드커브: `stack` 사용 기술
-- [ ] 성과 수치가 있으면 추가
+- [ ] (선택) 회사별 성과 수치·해결한 문제 구체화
 
 ### 기술 스택 — `data/skills.js`
-- [ ] Node.js·TypeScript·JavaScript, Oracle·MSSQL·MariaDB, Linux·Nginx·Shell, Python 사용처
+- [ ] (선택) 사용처 문구 다듬기
 
 ### 프로젝트 — `data/projects.js`
 - [ ] 두 프로젝트의 `github`, `video` 링크

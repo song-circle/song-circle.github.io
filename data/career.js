@@ -25,17 +25,17 @@ window.CAREER = [
   {
     period: "2026.08 – 현재",
     company: "(주)힐링샘",
-    domain: "",
-    role: "", // TODO: 직급 · 직무
-    title: "커뮤니티·쇼핑몰·보건교사 기록 시스템 개발",
+    domain: "커뮤니티 · 쇼핑몰 · 보건교사 기록 시스템",
+    role: "과장 · 1인 개발",
+    title: "운영 중인 서비스 3종 고도화·유지보수 단독 개발",
     current: true,
     points: [
-      "커뮤니티 서비스 개발",
-      "쇼핑몰 개발",
-      "보건교사 기록 시스템 개발"
-      // TODO: 각 서비스에서 맡은 범위·해결한 문제 구체화
+      "커뮤니티, 쇼핑몰, 보건교사 기록 시스템을 혼자 맡아 개발",
+      "기존 서비스 고도화와 기능 개선, 유지보수 담당",
+      "PHP·Java·TypeScript·Python으로 된 서비스를 Naver Cloud 환경에서 운영"
+      // TODO(선택): 서비스별로 해결한 문제·성과 구체화
     ],
-    stack: [] // TODO: 사용 기술
+    stack: ["PHP", "Java", "TypeScript", "Python", "Naver Cloud"]
   },
   {
     period: "2024.04 – 2026.06",
@@ -79,7 +79,7 @@ window.CAREER = [
     points: [
       "증권 스트리밍 서비스 관련 백엔드 개발 참여"
     ],
-    stack: [] // TODO(선택): 사용 기술
+    stack: ["Node.js", "TypeScript", "Oracle", "MSSQL", "MariaDB", "Linux", "Nginx", "Shell Script"]
   },
   {
     period: "2021.11 – 2024.01",
@@ -126,7 +126,7 @@ window.CAREER = [
         ]
       }
     ],
-    stack: [] // TODO: 사용 기술 (Node.js·TypeScript·Oracle·MSSQL 등 경력서 기술 중 이 회사에서 쓴 것)
+    stack: ["Node.js", "TypeScript", "Oracle", "MSSQL", "MariaDB", "Linux", "Nginx", "Shell Script"]
   }
 ];
 

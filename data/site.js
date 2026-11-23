@@ -8,8 +8,8 @@ window.SITE = {
   baseUrl: "https://song-circle.github.io", // TODO: 커스텀 도메인 연결 시 교체
 
   name: {
-    ko: "원형",
-    en: "원형" // TODO: 영문 이름 표기
+    ko: "송원형",
+    en: "송원형" // TODO: 영문 이름 표기
   },
 
   // 연락처
