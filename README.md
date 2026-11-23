@@ -67,7 +67,7 @@ python -m http.server 8000
 | 경력 | `data/career.js` | 배열. **위가 최신**. 항목 형식은 파일 상단 주석 참고 |
 | 기술 스택 | `data/skills.js` | `{ name, use }` |
 | 프로젝트 | `data/projects.js` | 배열. `status: "dev"`(진행 중) / `"released"`(출시) |
-| 유튜브 영상 | `data/videos.js` | 배열 맨 앞에 `{ id, title, date }` 추가 (메인엔 앞 3개) |
+| 유튜브 영상 | `data/videos.js` | `python .github/scripts/update_videos.py` 로 채널 새 영상을 자동 추가 (손으로 `{ id, title, date, short }` 추가도 가능). 메인엔 본편 우선 3개 |
 | 게임 | `data/games.js` | 아래 "새 게임 추가" 참고 |
 
 ### 경력 추가 예시
@@ -207,7 +207,6 @@ python -m http.server 8765    # 다른 창에서 실행해 두기
 - [ ] `privacy` 전체 (시행일, 운영자, 수집 항목, 목적, 보관 기간, 제3자 SDK, 삭제 방법, 아동 정책)
 
 ### 기타
-- [ ] 새 버그로그 영상이 올라오면 `data/videos.js` 맨 앞에 추가
 - [ ] 외주 폼 예산 구간이 원하는 기준인지 확인 (`data/i18n.js` 의 `contact.budget.*`)
 - [ ] `assets/og.png` 임시 이미지 교체 (1200×630)
 - [ ] 도메인 연결 후 주소 일괄 변경 (위 6단계)

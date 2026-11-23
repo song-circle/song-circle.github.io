@@ -107,7 +107,11 @@
 
   /* ---------- 유튜브 ---------- */
   function renderVideos() {
-    var vids = (window.VIDEOS || []).slice(0, 3);
+    // 가로 본편을 먼저(최신순), 그다음 Shorts(최신순)
+    var vids = (window.VIDEOS || []).slice().sort(function (a, b) {
+      if (!!a.short !== !!b.short) return a.short ? 1 : -1;
+      return (b.date || "").localeCompare(a.date || "");
+    }).slice(0, 3);
     $("videos-list").innerHTML = vids.length
       ? vids.map(function (v) {
           var url = "https://www.youtube.com/watch?v=" + encodeURIComponent(v.id);
