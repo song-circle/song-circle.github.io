@@ -1,0 +1,41 @@
+<!doctype html>
+<!--
+  게임 상세 페이지 템플릿
+  사용법: 이 파일을 /games/<slug>/index.html 로 복사한 뒤
+          {{slug}}, {{title}}, {{description}} 세 가지를 바꾸세요.
+  본문 내용은 모두 data/games.js 에서 slug로 찾아 렌더링됩니다.
+  (title/description은 검색엔진·공유 미리보기용이라 HTML에 직접 적습니다)
+-->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}} | song-circle</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="https://song-circle.github.io/games/{{slug}}/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="song-circle">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="https://song-circle.github.io/games/{{slug}}/">
+  <meta property="og:image" content="https://song-circle.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://song-circle.github.io/assets/og.png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body data-page="game" data-slug="{{slug}}">
+  <header id="site-header" class="site-header"></header>
+  <main id="main"><div id="page"></div></main>
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="/data/site.js"></script>
+  <script src="/data/i18n.js"></script>
+  <script src="/data/games.js"></script>
+  <script src="/assets/js/core.js"></script>
+  <script src="/assets/js/games.js"></script>
+</body>
+</html>
