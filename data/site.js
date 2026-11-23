@@ -4,7 +4,7 @@
    - 문자열 대신 { ko: "...", en: "..." } 형태로 쓰면 언어별로 다르게 표시됩니다.
    ========================================================================== */
 window.SITE = {
-  // 사이트 기본 URL (sitemap·OG·canonical 기준). 도메인 연결 후 변경. README "도메인 연결" 참고
+  // 사이트 기본 URL (참고용). HTML 메타·sitemap·robots 의 주소는 README "도메인 연결" 6단계의 일괄 치환으로 바꿉니다.
   baseUrl: "https://song-circle.github.io", // TODO: 커스텀 도메인 연결 시 교체
 
   name: {
