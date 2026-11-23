@@ -176,7 +176,6 @@ window.VIDEOS = [
 로컬 서버에서 빨간 `TODO:` 표시로도 확인할 수 있습니다. `grep -rn "TODO" data index.html privacy` 로 전체 목록을 볼 수 있습니다.
 
 ### 기본 정보 — `data/site.js`
-- [ ] `youtubeChannels` 의 Agent Workbench 채널 URL
 - [ ] `forms.outsourcing`, `forms.recruit` 폼 엔드포인트
 - [ ] `name.en` 영문 이름 표기
 - [ ] (선택) `links.linkedin`
@@ -202,7 +201,6 @@ window.VIDEOS = [
 - [ ] 시행일, 보관 기간, 폼 서비스명
 
 ### 기타
-- [ ] `index.html` JSON-LD `sameAs` 에 Agent Workbench 채널 URL 추가
 - [ ] 외주 폼 예산 구간이 원하는 기준인지 확인 (`data/i18n.js` 의 `contact.budget.*`)
 - [ ] `assets/og.png` 임시 이미지 교체 (1200×630)
 - [ ] 도메인 연결 후 주소 일괄 변경 (위 6단계)

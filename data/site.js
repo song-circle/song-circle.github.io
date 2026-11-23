@@ -27,12 +27,8 @@ window.SITE = {
       name: "버그로그",
       url: "https://www.youtube.com/@buglog_kr",
       desc: { ko: "한국어 개발 일지. 프로그램을 만들고 버그를 찾아 고치는 과정", en: "Korean dev log: building programs and fixing their bugs" }
-    },
-    {
-      name: "Agent Workbench",
-      url: "", // TODO: Agent Workbench 채널 URL
-      desc: { ko: "영어 채널. Claude Code와 AI 에이전트로 실제로 만들어 보는 과정", en: "Real builds with Claude Code and AI agents, one working thing per video" }
     }
+    // 채널을 더 공개하려면 { name, url, desc } 를 추가
   ],
 
   // 외부 폼 서비스(Formspree 등) 엔드포인트. 비어 있으면 메일 앱(mailto)으로 대체됩니다.

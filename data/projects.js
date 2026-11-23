@@ -136,7 +136,7 @@ window.PROJECTS = [
     status: "dev",
     tags: ["Python", "Claude Code", "MCP"],
     github: "https://github.com/song-circle/agent-workbench",
-    video: "", // TODO: Agent Workbench 채널 URL
+    video: "",
     detail: false
   },
   {
